@@ -1,5 +1,5 @@
 function isAtom(sExp) {
-  return typeof sE === 'function' || typeof sExp === 'object' ? false : true;
+  return typeof sExp === 'function' || typeof sExp === 'object' ? false : true;
 }
 
 function isNull(list) {
