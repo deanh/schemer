@@ -37,9 +37,10 @@ var Little = (function _LittleIIFE(global) {
 
   function eqLists(a, b) {
     // null lists are equal
-    if (isNull(a) && isNull(b)) return true;
-    // otherwise, check cars and recurse
-    return (car(a) === car(b)) ? isEq(cdr(a), cdr(b)) : false;  
+    if (isNull(a) && isNull(b))
+      return true;
+    else
+      return isEq(car(a), car(b)) &&  isEq(cdr(a), cdr(b));
   }
 
   function eqLambdas(f, g) {
