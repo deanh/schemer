@@ -76,7 +76,7 @@ var Little = (function _LittleIIFE(global) {
       isLat: isLat,
       isMember: isMember
     };
-  })(this);
+  })(global);
 
   return {
     isAtom: isAtom,
