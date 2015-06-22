@@ -58,32 +58,35 @@ var Little = (function _LittleIIFE(global) {
     else return eqLists(a, b);
   }
 
+  /**
+   * Chapter 2
+   */
+  var Chapter2 = (function _Chapter2IIFE(global) { 
+    function isLat(l) {
+      if (isNull(l)) return true;
+      return isAtom(car(l)) ? isLat(cdr(l)) : false;
+    }
+
+    function isMember(a, lat) {
+      if (isNull(lat)) return false;
+      return (isEq(a, car(lat))) || isMember(a, cdr(lat));
+    }
+
+    return {
+      isLat: isLat,
+      isMember: isMember
+    };
+  })(this);
+
   return {
     isAtom: isAtom,
     isNull: isNull,
     car: car,
     cdr: cdr,
     cons: cons,
-    isEq: isEq
+    isEq: isEq,
+    Chapter2: Chapter2
   };
 })(this);
 
-/**
- * Chapter 2
- */
-Little.Chapter2 = (function _Chapter2IIFE(global) { 
-  function isLat(l) {
-    if (isNull(l)) return true;
-    return isAtom(car(l)) ? isLat(cdr(l)) : false;
-  }
 
-  function isMember(a, lat) {
-    if (isNull(lat)) return false;
-    return (isEq(a, car(lat))) || isMember(a, cdr(lat));
-  }
-
-  return {
-    isLat: isLat,
-    isMember: isMember
-  };
-})(this);
