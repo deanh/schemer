@@ -13,8 +13,9 @@ function pollute(ctx, obj) {
  * Core Functions
  */
 var Little = (function _LittleIIFE(global) {
-  function isAtom(sExp) {
-    return !(typeof sExp === 'function' || typeof sExp === 'object');
+  function isAtom(x) {
+    // this catches functions, arrays, and other objects
+    return !(typeof x === 'function' || typeof x === 'object');
   }
 
   function isNull(list) {
@@ -46,6 +47,7 @@ var Little = (function _LittleIIFE(global) {
     return f.toString() === g.toString();
   }
 
+  // this does more than eq? which may not be a great idea.
   function isEq(a, b) {
     // a list and an atom are not equal
     if (isAtom(a) !== isAtom(b))
@@ -53,8 +55,10 @@ var Little = (function _LittleIIFE(global) {
     // two atoms are equal via ===
     else if (isAtom(a) && isAtom(b))
       return a === b;
+    // check lambdas
     else if (typeof a === 'function' && typeof b === 'function')
       return eqLambdas(a, b);
+    // else assume a list
     else return eqLists(a, b);
   }
 
@@ -88,5 +92,3 @@ var Little = (function _LittleIIFE(global) {
     Chapter2: Chapter2
   };
 })(this);
-
-
