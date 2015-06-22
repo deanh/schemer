@@ -2,7 +2,7 @@
 
 This is the scratch repo for my work in a Little Schemer reading club. The ```racket``` dir
 contains chapter by chapter implementations in Racket. The ```js``` dir contains
-one large file with functions implemented in JavaScript.
+one large file with functions implemented in JavaScript. JavaScript support should be considered an experimental feature. :)
 
 ## Scheming in DrRacket
 
