@@ -1,3 +1,6 @@
+/**
+ * Pollute one object with another
+ */
 function pollute(ctx, obj) {
   for (var prop in obj) {
     if (obj.hasOwnProperty(prop)) {
@@ -6,6 +9,9 @@ function pollute(ctx, obj) {
   }
 }
 
+/**
+ * Core Functions
+ */
 var Little = (function _LittleIIFE(global) {
   function isAtom(sExp) {
     return !(typeof sExp === 'function' || typeof sExp === 'object');
@@ -62,8 +68,10 @@ var Little = (function _LittleIIFE(global) {
   };
 })(this);
 
-// Chapter 2
-var Chapter2 = (function _Chapter2IIFE(global) { 
+/**
+ * Chapter 2
+ */
+Little.Chapter2 = (function _Chapter2IIFE(global) { 
   function isLat(l) {
     if (isNull(l)) return true;
     return isAtom(car(l)) ? isLat(cdr(l)) : false;
