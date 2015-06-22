@@ -40,7 +40,7 @@ var Little = (function _LittleIIFE(global) {
     if (isNull(a) && isNull(b))
       return true;
     else
-      return isEq(car(a), car(b)) &&  isEq(cdr(a), cdr(b));
+      return isEq(car(a), car(b)) && isEq(cdr(a), cdr(b));
   }
 
   function eqLambdas(f, g) {

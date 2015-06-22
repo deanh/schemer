@@ -1,3 +1,4 @@
+/*global QUnit, isEq, isAtom, isNull, car, cdr, cons */
 QUnit.module("Chapter 1: Toys");
 
 QUnit.test("Primitives", function testPrimitives(assert) {
@@ -28,4 +29,5 @@ QUnit.test("Let's play", function testLetsPlay(assert) {
 
   l = [['b'], ['x', 'y'], [['c']]];
   assert.ok(isEq(cdr(cdr(l)),[[['c']]]));
+
 });
