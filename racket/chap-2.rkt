@@ -1,9 +1,9 @@
 #lang racket/base
 (require "lib/shared.rkt")
+(provide lat? member?)
 
 (define lat?
   (lambda (l)
-    (print l)
     (cond
       ((null? l) #t)
       ((atom? (car l)) (lat? (cdr l)))
