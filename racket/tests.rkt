@@ -36,3 +36,13 @@
 (check-equal? (firsts '(((five plums) four)
                         (eleven green oranges)
                         ((no) more))) '((five plums) eleven (no)))
+
+;; insertR
+(check-equal? (insertR 'topping 'fudge '(ice cream with fudge for dessert)) 
+              '(ice cream with fudge topping for dessert))
+(check-equal? (insertR 'jalapeño 'and '(tacos tamales and salsa))
+              '(tacos tamales and jalapeño salsa))
+(check-equal? (insertR 'e 'd '(a b c d f g d h))
+              '(a b c d e f g d h))
+
+
