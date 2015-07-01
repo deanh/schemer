@@ -50,7 +50,7 @@ var Little = (function _LittleIIFE(global) {
 
   // this does more than eq? which may not be a great idea.
   function isEq(a, b) {
-    // a list and an atom are not equal
+    // an atom and a non-atom are not equal
     if (isAtom(a) !== isAtom(b))
       return false;
     // two atoms are equal via ===
@@ -66,7 +66,7 @@ var Little = (function _LittleIIFE(global) {
   /**
    * Chapter 2
    */
-  var Chapter2 = (function _Chapter2IIFE(global) { 
+  var Chapter2 = (function _Chapter2IIFE(global) {
     function isLat(l) {
       if (isNull(l)) return true;
       return isAtom(car(l)) ? isLat(cdr(l)) : false;
@@ -81,6 +81,13 @@ var Little = (function _LittleIIFE(global) {
       isLat: isLat,
       isMember: isMember
     };
+  })(global);
+
+  /**
+   * Chapter 3
+   */
+  var Chapter3 = (function _Chapter3IIFE(global) {
+
   })(global);
 
   return {
