@@ -45,4 +45,22 @@
 (check-equal? (insertR 'e 'd '(a b c d f g d h))
               '(a b c d e f g d h))
 
+;; insertL
+(check-equal? (insertL 'topping 'fudge '(ice cream with fudge for dessert)) 
+              '(ice cream with topping fudge for dessert))
+(check-equal? (insertL 'jalapeño 'and '(tacos tamales and salsa))
+              '(tacos tamales jalapeño and salsa))
+(check-equal? (insertL 'e 'd '(a b c d f g d h))
+              '(a b c e d f g d h))
 
+;; subst
+(check-equal? (subst 'topping 'fudge '(ice cream with fudge for dessert)) 
+              '(ice cream with topping for dessert))
+(check-equal? (subst 'jalapeño 'and '(tacos tamales and salsa))
+              '(tacos tamales jalapeño salsa))
+(check-equal? (subst 'e 'd '(a b c d f g d h))
+              '(a b c e f g d h))
+
+;; subst2
+(check-equal? (subst2 'vanilla 'chocolate 'banana '(banana ice cream with chocolate topping))
+              '(vanilla ice cream with chocolate topping))
