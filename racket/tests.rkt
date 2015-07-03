@@ -64,3 +64,19 @@
 ;; subst2
 (check-equal? (subst2 'vanilla 'chocolate 'banana '(banana ice cream with chocolate topping))
               '(vanilla ice cream with chocolate topping))
+
+;; multirember
+(check-equal? (multirember 'cup '(coffee cup tea cup and hick cup))
+              '(coffee tea and hick))
+
+;; multiinsertR
+(check-equal? (multiinsertR 'fried 'fish '(chips and fish or fish and fried))
+              '(chips and fish fried or fish fried and fried))
+
+;; multiinsertL
+(check-equal? (multiinsertL 'fried 'fish '(chips and fish or fish and fried))
+              '(chips and fried fish or fried fish and fried))
+
+;; multisubst
+(check-equal? (multisubst 'fried 'fish '(chips and fish or fish and fried))
+              '(chips and fried or fried and fried))
