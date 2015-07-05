@@ -116,12 +116,49 @@ var Little = (function _LittleIIFE(global) {
         cons(car(lat), subst(n, old, cdr(lat)));
     }
 
+    function subst2(n, o1, o2, lat) {
+      if (isNull(lat)) return [];
+      return isEq(o1, car(lat)) || isEq(o2, car(lat)) ? (cons(n, cdr(lat))) :
+        cons(car(lat), subst(n, o1, o2, cdr(lat)));
+    }
+
+    function multirember(a, lat) {
+      if (isNull(lat)) return [];
+      return isEq(a, car(lat)) ? multirember(a, cdr(lat)) :
+        cons(car(lat), multirember(a, cdr(lat)));
+    }
+
+    function multiinsertR(n, old, lat) {
+      if (isNull(lat)) return [];
+      return isEq(old, car(lat)) ?
+        (cons(old, cons(n, multiinsertR(n, old, cdr(lat))))) :
+        cons(car(lat), multiinsertR(n, old, cdr(lat)));
+    }
+
+    function multiinsertL(n, old, lat) {
+      if (isNull(lat)) return [];
+      return isEq(old, car(lat)) ?
+        (cons(n, cons(old, multiinsertL(n, old, cdr(lat))))) :
+        cons(car(lat), multiinsertL(n, old, cdr(lat)));
+    }
+
+    function multisubst(n, old, lat) {
+      if (isNull(lat)) return [];
+      return isEq(old, car(lat)) ? (cons(n, multisubst(n, old, cdr(lat)))) :
+        cons(car(lat), multisubst(n, old, cdr(lat)));
+    }
+
     return {
       rember: rember,
       firsts: firsts,
       insertR: insertR,
       insertL: insertL,
-      subst: subst
+      subst: subst,
+      subst2: subst2,
+      multirember: multirember,
+      multiinsertR: multiinsertR,
+      multiinsertL: multiinsertL,
+      multisubst: multisubst,
     };
 
   })(global);

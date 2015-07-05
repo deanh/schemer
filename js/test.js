@@ -136,7 +136,7 @@ QUnit.test("insertL", function(assert) {
 
 QUnit.test("subst", function(assert) {
   assert.deepEqual(
-   subst("topping", "fudge", "ice cream with fudge for dessert".split(" ")),
+    subst("topping", "fudge", "ice cream with fudge for dessert".split(" ")),
     "ice cream with topping for dessert".split(" ")
   );
 
@@ -152,21 +152,37 @@ QUnit.test("subst", function(assert) {
 });
 
 QUnit.test("subst2", function(assert) {
-
+  assert.deepEqual(
+    subst2("vanilla", "chocolate", "banana",
+           "banana ice cream with chocolate topping".split(" ")),
+    "vanilla ice cream with chocolate topping".split(" ")
+  );
 });
 
 QUnit.test("multirember", function(assert) {
-
+  assert.deepEqual(
+    multirember("cup", "coffee cup tea cup and hick cup".split(" ")),
+    "coffee tea and hick".split(" ")
+  );
 });
 
 QUnit.test("multiinsertR", function(assert) {
-
+  assert.deepEqual(
+    multiinsertR("fried", "fish", "chips and fish or fish and fried".split(" ")),
+    "chips and fish fried or fish fried and fried".split(" ")
+  )
 });
 
 QUnit.test("multiinsertL", function(assert) {
-
+  assert.deepEqual(
+    multiinsertL("fried", "fish", "chips and fish or fish and fried".split(" ")),
+    "chips and fried fish or fried fish and fried".split(" ")
+  )
 });
 
-QUnit.test("nultisubst", function(assert) {
-
+QUnit.test("multisubst", function(assert) {
+  assert.deepEqual(
+    multisubst("fried", "fish", "chips and fish or fish and fried".split(" ")),
+    "chips and fried or fried and fried".split(" ")
+  )
 })
