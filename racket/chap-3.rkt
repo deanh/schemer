@@ -19,7 +19,7 @@
     (cond
       ((null? lat) '())
       ((eq? a (car lat)) (cdr lat))
-      (else (cons (car lat) 
+      (else (cons (car lat)
                   (rember a (cdr lat)))))))
 
 (define firsts
@@ -33,50 +33,50 @@
   (lambda (new old lat)
     (cond
       ((null? lat) '())
-      (else 
-        (cond 
-          ((eq? old (car lat)) (cons old 
-                                     (cons new 
+      (else
+        (cond
+          ((eq? old (car lat)) (cons old
+                                     (cons new
                                            (cdr lat))))
           (else
-            (cons (car lat) 
+            (cons (car lat)
                   (insertR new old (cdr lat)))))))))
 
 (define insertL
   (lambda (new old lat)
     (cond
       ((null? lat) '())
-      (else 
-        (cond 
-          ((eq? old (car lat)) (cons new 
-                                     (cons old 
+      (else
+        (cond
+          ((eq? old (car lat)) (cons new
+                                     (cons old
                                            (cdr lat))))
           (else
-            (cons (car lat) 
+            (cons (car lat)
                   (insertL new old (cdr lat)))))))))
 
 (define subst
   (lambda (new old lat)
     (cond
       ((null? lat) '())
-      (else 
-        (cond 
-          ((eq? old (car lat)) (cons new 
+      (else
+        (cond
+          ((eq? old (car lat)) (cons new
                                      (cdr lat)))
           (else
-            (cons (car lat) 
+            (cons (car lat)
                   (subst new old (cdr lat)))))))))
 
 (define subst2
   (lambda (new o1 o2 lat)
     (cond
       ((null? lat) '())
-      (else 
-        (cond 
-          ((or (eq? o1 (car lat)) (eq? o2 (car lat))) 
+      (else
+        (cond
+          ((or (eq? o1 (car lat)) (eq? o2 (car lat)))
             (cons new (cdr lat)))
           (else
-            (cons (car lat) 
+            (cons (car lat)
                   (subst2 new o1 o2 (cdr lat)))))))))
 
 (define multirember
@@ -86,7 +86,7 @@
       (else
        (cond
          ((eq? a (car lat)) (multirember a (cdr lat)))
-         ((cons (car lat) 
+         ((cons (car lat)
                   (multirember a (cdr lat)))  ))))))
 
 (define multiinsertR
@@ -95,10 +95,10 @@
       ((null? lat) '())
       (else
        (cond
-         ((eq? old (car lat)) (cons old 
-                                     (cons new 
+         ((eq? old (car lat)) (cons old
+                                     (cons new
                                            (multiinsertR new old (cdr lat)))))
-         ((cons (car lat) 
+         ((cons (car lat)
                   (multiinsertR new old (cdr lat)))))))))
 
 (define multiinsertL
@@ -107,10 +107,10 @@
       ((null? lat) '())
       (else
        (cond
-         ((eq? old (car lat)) (cons new 
-                                     (cons old 
+         ((eq? old (car lat)) (cons new
+                                     (cons old
                                            (multiinsertL new old (cdr lat)))))
-         ((cons (car lat) 
+         ((cons (car lat)
                   (multiinsertL new old (cdr lat)))))))))
 
 (define multisubst
@@ -119,7 +119,7 @@
       ((null? lat) '())
       (else
        (cond
-         ((eq? old (car lat)) (cons new 
+         ((eq? old (car lat)) (cons new
                                     (multisubst new old (cdr lat))))
-         ((cons (car lat) 
+         ((cons (car lat)
                 (multisubst new old (cdr lat)))))))))

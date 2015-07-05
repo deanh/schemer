@@ -87,6 +87,42 @@ var Little = (function _LittleIIFE(global) {
    * Chapter 3
    */
   var Chapter3 = (function _Chapter3IIFE(global) {
+    function rember(a, lat) {
+      if (isNull(lat)) return false;
+      return isEq(a, car(lat)) ? cdr(lat) :
+        cons(car(lat), rember(a, cdr(lat)));
+    }
+
+    function firsts(l) {
+      if (isNull(l)) return [];
+      return cons(car(car(l)), firsts(cdr(l)));
+    }
+
+    function insertR(n, old, lat) {
+      if (isNull(lat)) return [];
+      return isEq(old, car(lat)) ? (cons(old, cons(n, cdr(lat)))) :
+        cons(car(lat), insertR(n, old, cdr(lat)));
+    }
+
+    function insertL(n, old, lat) {
+      if (isNull(lat)) return [];
+      return isEq(old, car(lat)) ? (cons(n, cons(old, cdr(lat)))) :
+        cons(car(lat), insertL(n, old, cdr(lat)));
+    }
+
+    function subst(n, old, lat) {
+      if (isNull(lat)) return [];
+      return isEq(old, car(lat)) ? (cons(n, cdr(lat))) :
+        cons(car(lat), subst(n, old, cdr(lat)));
+    }
+
+    return {
+      rember: rember,
+      firsts: firsts,
+      insertR: insertR,
+      insertL: insertL,
+      subst: subst
+    };
 
   })(global);
 
@@ -97,6 +133,7 @@ var Little = (function _LittleIIFE(global) {
     cdr: cdr,
     cons: cons,
     isEq: isEq,
-    Chapter2: Chapter2
+    Chapter2: Chapter2,
+    Chapter3: Chapter3
   };
 })(this);
