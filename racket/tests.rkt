@@ -3,7 +3,9 @@
 (require rackunit
          "lib/shared.rkt"
          "chap-2.rkt"
-         "chap-3.rkt")
+         "chap-3.rkt"
+         "chap-4.rkt"
+         "chap-5.rkt")
 
 ;; Chapter 1
 
@@ -80,3 +82,52 @@
 ;; multisubst
 (check-equal? (multisubst 'fried 'fish '(chips and fish or fish and fried))
               '(chips and fried or fried and fried))
+
+;; rember-star
+(check-equal? (rember-star 'cup '((coffee) cup ((tea) cup) (and (hick)) cup))
+              '((coffee) ((tea)) (and (hick))))
+
+(check-equal? (rember-star 'sauce '(((tomato sauce)) ((bean) sauce) (and ((flying)) sauce)))
+              '(((tomato)) ((bean)) (and ((flying)))))
+
+;; insertR-star
+(check-equal? (insertR-star 'roast 'chuck '((how much (wood)) could ((a (wood) chuck)) (((chuck))) (if (a) ((wood chuck))) could chuck wood))
+              '((how much (wood)) could ((a (wood) chuck roast)) (((chuck roast))) (if (a) ((wood chuck roast))) could chuck roast wood))
+
+;; occur-star
+(check-equal? (occur-star 'banana '((banana) (split ((((banana ice))) (cream (banana)) sherbet)) (banana) (bread) (banana brandy)))
+              5)
+
+;; subst-star
+(check-equal? (subst-star 'orange 'banana '((banana) (split ((((banana ice))) (cream (banana)) sherbert)) (banana) (bread) (banana brandy)))
+              '((orange) (split ((((orange ice))) (cream (orange)) sherbert)) (orange) (bread) (orange brandy)))
+
+;; insertL-star
+(check-equal? (insertL-star 'pecker 'chuck '((how much (wood)) could ((a (wood) chuck)) (((chuck))) (if (a) ((wood chuck))) could chuck wood))
+              '((how much (wood)) could ((a (wood) pecker chuck)) (((pecker chuck))) (if (a) ((wood pecker chuck))) could pecker chuck wood))
+
+;; member-star
+(check-equal? (member-star 'chips '((potato) (chips ((with) fish) (chips))))
+              #t)
+
+;; leftmost
+(check-equal? (leftmost '((potato) (chips ((with) fish) (chips))))
+              'potato)
+(check-equal? (leftmost '(((hot) (tuna (and))) cheese))
+              'hot)
+
+;; eqlist?
+(check-equal? (eqlist? '(strawberry ice cream) '(strawberry ice cream))
+              #t)
+
+(check-equal? (eqlist? '(strawberry ice cream) '(strawberry cream ice))
+              #f)
+
+(check-equal? (eqlist? '((banana) split) '(banana (split)))
+              #f)
+
+(check-equal? (eqlist? '(beef ((sausage)) (and (soda))) '(beef ((salami)) (and (soda))))
+              #f)
+
+(check-equal? (eqlist? '(beef ((sausage)) (and (soda))) '(beef ((sausage)) (and (soda))))
+              #t)
