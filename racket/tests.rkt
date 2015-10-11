@@ -5,7 +5,8 @@
          "chap-2.rkt"
          "chap-3.rkt"
          "chap-4.rkt"
-         "chap-5.rkt")
+         "chap-5.rkt"
+         "chap-6.rkt")
 
 ;; Chapter 1
 
@@ -131,3 +132,51 @@
 
 (check-equal? (eqlist? '(beef ((sausage)) (and (soda))) '(beef ((sausage)) (and (soda))))
               #t)
+
+;; infix-value
+(check-equal? (infix-value '(1 + 1))
+              2)
+
+(check-equal? (infix-value '(1 x 2))
+              2)
+
+(check-equal? (infix-value '(2 ^ 3))
+              8)
+
+(check-equal? (infix-value '((1 + 2) x 4))
+              12)
+
+(check-equal? (infix-value '(1 + (3 x 4)))
+             13)
+
+;; prefix-value
+(check-equal? (prefix-value '(+ 1 1))
+             2)
+
+(check-equal? (prefix-value '(x 1 2))
+              2)
+
+(check-equal? (prefix-value '(^ 2 3))
+              8)
+
+(check-equal? (prefix-value '(x (+ 1 2) 4))
+              12)
+
+(check-equal? (prefix-value '(+ 1 (x 3 4)))
+              13)
+
+;; value
+(check-equal? (value '(+ 1 1))
+             2)
+
+(check-equal? (value '(x 1 2))
+              2)
+
+(check-equal? (value '(^ 2 3))
+              8)
+
+(check-equal? (value '(x (+ 1 2) 4))
+              12)
+
+(check-equal? (value '(+ 1 (x 3 4)))
+              13)

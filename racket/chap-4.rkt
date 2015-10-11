@@ -7,6 +7,16 @@
          sub
          addtup
          mult
+         tupadd
+         lessthan
+         greaterthan
+         equal
+         pow
+         div
+         length
+         pick
+         no-nums
+         all-nums
          eqan?)
 
 (define add1
