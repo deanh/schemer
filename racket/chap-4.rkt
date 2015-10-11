@@ -1,6 +1,13 @@
 #lang racket/base
 
 (require "lib/shared.rkt")
+(provide add1
+         sub1
+         add
+         sub
+         addtup
+         mult
+         eqan?)
 
 (define add1
   (lambda (n)
