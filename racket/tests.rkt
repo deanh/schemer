@@ -6,7 +6,8 @@
          "chap-3.rkt"
          "chap-4.rkt"
          "chap-5.rkt"
-         "chap-6.rkt")
+         "chap-6.rkt"
+         "chap-7.rkt")
 
 ;; Chapter 1
 
@@ -180,3 +181,13 @@
 
 (check-equal? (value '(+ 1 (x 3 4)))
               13)
+
+;; set?
+(check-equal? (set? '(apple peaches apple plum))
+              #f)
+
+(check-equal? (set? '(apples peaches pears plums))
+              #t)
+
+(check-equal? (set? '())
+              #t)
